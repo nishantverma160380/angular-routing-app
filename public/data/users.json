@@ -1,0 +1,67 @@
+[
+  {
+    "id": 1,
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "john.smith@example.com",
+    "categories": [
+      { "id": 1, "name": "Shirts", "description": "Various types of shirts", "audience": ["Male", "Female", "Unisex"] },
+      { "id": 4, "name": "Footwear", "description": "Shoes, trainers, boots and sandals", "audience": ["Male", "Female", "Unisex"] },
+      { "id": 7, "name": "Casual Wear", "description": "Everyday comfortable clothing", "audience": ["Male", "Female", "Unisex"] }
+    ]
+  },
+  {
+    "id": 2,
+    "firstName": "Sarah",
+    "lastName": "Williams",
+    "email": "sarah.williams@example.com",
+    "categories": [
+      { "id": 2, "name": "Pants", "description": "Different styles of pants", "audience": ["Male", "Female", "Unisex"] },
+      { "id": 6, "name": "Formal Wear", "description": "Suits, shirts, dresses and formal clothing", "audience": ["Male", "Female", "Unisex"] },
+      { "id": 8, "name": "Accessories", "description": "Belts, bags, scarves, hats and other accessories", "audience": ["Male", "Female", "Unisex"] }
+    ]
+  },
+  {
+    "id": 3,
+    "firstName": "David",
+    "lastName": "Brown",
+    "email": "david.brown@example.com",
+    "categories": [
+      { "id": 1, "name": "Shirts", "description": "Various types of shirts", "audience": ["Male", "Female", "Unisex"] },
+      { "id": 5, "name": "Sportswear", "description": "Clothing designed for sport and fitness", "audience": ["Male", "Female", "Unisex"] }
+    ]
+  },
+  {
+    "id": 4,
+    "firstName": "Emma",
+    "lastName": "Jones",
+    "email": "emma.jones@example.com",
+    "categories": [
+      { "id": 3, "name": "Dresses", "description": "Collection of dresses", "audience": ["Female", "Unisex"] },
+      { "id": 6, "name": "Formal Wear", "description": "Suits, shirts, dresses and formal clothing", "audience": ["Male", "Female", "Unisex"] },
+      { "id": 9, "name": "Winter Wear", "description": "Coats, jackets, knitwear and winter clothing", "audience": ["Male", "Female", "Unisex"] }
+    ]
+  },
+  {
+    "id": 5,
+    "firstName": "Raj",
+    "lastName": "Patel",
+    "email": "raj.patel@example.com",
+    "categories": [
+      { "id": 1, "name": "Shirts", "description": "Various types of shirts", "audience": ["Male", "Female", "Unisex"] },
+      { "id": 5, "name": "Sportswear", "description": "Clothing designed for sport and fitness", "audience": ["Male", "Female", "Unisex"] },
+      { "id": 10, "name": "Ethnic Wear", "description": "Traditional and cultural clothing", "audience": ["Male", "Female", "Unisex"] }
+    ]
+  },
+  {
+    "id": 6,
+    "firstName": "Priya",
+    "lastName": "Sharma",
+    "email": "priya.sharma@example.com",
+    "categories": [
+      { "id": 2, "name": "Pants", "description": "Different styles of pants", "audience": ["Male", "Female", "Unisex"] },
+      { "id": 8, "name": "Accessories", "description": "Belts, bags, scarves, hats and other accessories", "audience": ["Male", "Female", "Unisex"] },
+      { "id": 10, "name": "Ethnic Wear", "description": "Traditional and cultural clothing", "audience": ["Male", "Female", "Unisex"] }
+    ]
+  }
+]

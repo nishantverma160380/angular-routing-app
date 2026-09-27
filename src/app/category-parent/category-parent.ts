@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Categories } from '../categories/categories';
 
-import {
-  CategoryAudience
-} from '../models/categoryModel';
+import { Category, CategoryAudience } from '../models/categoryModel';
+import { CategoriesService } from '../services/categoriesService';
 
 @Component({
   selector: 'app-category-parent',
@@ -23,5 +22,13 @@ export class CategoryParent {
     'Female',
     'Unisex'
   ];
+  categories: Category[] = [];
+  private categoriesService = inject(CategoriesService);
+
+  constructor() {
+    this.categoriesService.getCategoryData().subscribe((categories) => {
+      this.categories = categories;
+    });
+  }
 
 }

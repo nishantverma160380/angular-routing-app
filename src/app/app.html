@@ -1,12 +1,34 @@
 <h1>Clothing Application</h1>
+<p>
+  Logged in as:
+  <strong>
+    {{ authService.role() }}
+  </strong>
+</p>
+
+<button (click)="authService.loginAsUser()">
+  Normal User
+</button>
+
+<button (click)="authService.loginAsAdmin()">
+  Admin
+</button>
 
 <nav class="nav">
   <a routerLink="/home" routerLinkActive="active">Home</a>
   <a routerLink="/categories" routerLinkActive="active">Categories</a>
   <a routerLink="/user" routerLinkActive="active">User</a>
-  <a routerLink="/employees" routerLinkActive="active">Employees</a>
+
+  @if (authService.isAdmin()) {
+  |
+  <a routerLink="/employees" routerLinkActive="active">
+    Employees
+  </a>
+  }
 </nav>
+
 <hr>
+
 <main class="main">
   <router-outlet />
 </main>

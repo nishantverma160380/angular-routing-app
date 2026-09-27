@@ -11,4 +11,7 @@ import { AuthService } from './services/authService';
 
 export class App { 
   readonly authService = inject(AuthService);
+  constructor() { 
+    console.log('App component initialized');
+  }
 }

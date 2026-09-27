@@ -1,0 +1,23 @@
+.user-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+}
+/* Individual grid item */
+.user-grid app-user {
+  display: block;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+  border-radius: 0.5rem;
+}
+
+/* Highlight the selected/hovered user */
+.user-grid app-user:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  background-color: #eaf3ff;
+  border: 1px solid #90caf9;
+  cursor: pointer;
+}

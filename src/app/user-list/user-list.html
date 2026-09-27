@@ -1,0 +1,14 @@
+<section>
+    <h1>Parent Component</h1>
+    <h2>Users</h2>
+    <label>
+        Filter by name:
+        <input type="search" [(ngModel)]="nameFilter" placeholder="Search users">
+    </label>
+    <hr />
+    <div class="employee-grid">
+        @for (user of userList | userNameFilter: nameFilter; track user.id) {
+        <app-user [userChildList]="user" (deleteUserSelected)="deleteUser($event)" />
+        }
+    </div>
+</section>

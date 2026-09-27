@@ -1,0 +1,27 @@
+<h1>Child Component</h1>
+<ng-content></ng-content>
+<article class="user-card">
+  <h2>{{ userChildList.firstName }} {{ userChildList.lastName }}</h2>
+  <dl>
+    <dt>ID</dt>
+    <dd>{{ userChildList.id }}</dd>
+    <dt>Email</dt>
+    <dd>{{ userChildList.email }}</dd>
+    <dt>Categories</dt>
+    <dd>
+      @if (userChildList.categories.length > 0) {
+        <ul>
+          @for (category of userChildList.categories; track $index) {
+            <li>
+              <strong>{{ category.name }}</strong>: {{ category.description }}
+              ({{ category.audience.join(', ') }})
+            </li>
+          }
+        </ul>
+      } @else {
+        <span>No categories assigned.</span>
+      }
+    </dd>
+    <dd><button (click)="deleteUser()">Delete User</button></dd>
+  </dl>
+</article>

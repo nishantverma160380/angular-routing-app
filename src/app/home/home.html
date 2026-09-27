@@ -1,0 +1,21 @@
+<h2>Clothing Brand Application</h2>
+<p>Welcome to the clothing brand management application.</p>
+<p>Use the navigation menu to view users and clothing categories.</p>
+<hr>
+
+<p><button (click)="onClickUpdateCount()">Update Count</button></p>
+<p>Button Clicked: {{ updateCount | currency:'GBP' }} (Pipe currency)</p>
+<p>Button Clicked: {{ updateCount | i18nPlural:messages }} (Pipe i18nPlural - Selects text according to numeric count)</p>
+<p>Text Value(Using signal): {{ textValue() }} (Pipe i18nPlural - Selects text according to numeric count)</p>
+<p>Gender: {{ gender | i18nSelect:genderMessages }} (Pipe i18nSelect - Selects text according to string value)</p>
+<hr>
+
+<p>Date: {{ today | date:'dd/MM/yyyy' }} (Pipe date)</p>
+<p>Date: {{ today | date:'dd/MMM/yyyy' }} (Pipe date)</p>
+<p>Date: {{ today | date:'EEEE, MMMM d, y' }} (Pipe date)</p>
+<hr>
+<p><label>Enter your name:</label> <input type="text" [(ngModel)]="userName"></p>
+<p> Normal value: {{ userName }} </p>
+<p> Uppercase value: {{ userName | uppercase }}  (Pipe uppercase)</p>
+<p> Titlecase value: {{ userName | titlecase }}  (Pipe titlecase)</p>
+<hr>

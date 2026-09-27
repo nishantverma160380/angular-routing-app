@@ -1,0 +1,75 @@
+import { User } from '../models/userModel';
+import { clothingCategories } from './clothing-categories-data';
+
+export const userDataList: User[] = [
+  {
+    id: 1,
+    firstName: 'John',
+    lastName: 'Smith',
+    email: 'john.smith@example.com',
+    categories: [
+      clothingCategories[0],
+      clothingCategories[3],
+      clothingCategories[6]
+    ]
+  },
+
+  {
+    id: 2,
+    firstName: 'Sarah',
+    lastName: 'Williams',
+    email: 'sarah.williams@example.com',
+    categories: [
+      clothingCategories[1],
+      clothingCategories[5],
+      clothingCategories[7]
+    ]
+  },
+
+  {
+    id: 3,
+    firstName: 'David',
+    lastName: 'Brown',
+    email: 'david.brown@example.com',
+    categories: [
+      clothingCategories[0],
+      clothingCategories[4]
+    ]
+  },
+
+  {
+    id: 4,
+    firstName: 'Emma',
+    lastName: 'Jones',
+    email: 'emma.jones@example.com',
+    categories: [
+      clothingCategories[1],
+      clothingCategories[6],
+      clothingCategories[8]
+    ]
+  },
+
+  {
+    id: 5,
+    firstName: 'Raj',
+    lastName: 'Patel',
+    email: 'raj.patel@example.com',
+    categories: [
+      clothingCategories[0],
+      clothingCategories[5],
+      clothingCategories[9]
+    ]
+  },
+
+  {
+    id: 6,
+    firstName: 'Priya',
+    lastName: 'Sharma',
+    email: 'priya.sharma@example.com',
+    categories: [
+      clothingCategories[1],
+      clothingCategories[7],
+      clothingCategories[9]
+    ]
+  }
+];

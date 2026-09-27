@@ -1,0 +1,29 @@
+@if (showAddForm) {
+<form class="employee-card" (ngSubmit)="addEmployee()">
+    <h2>Add employee</h2>
+    <label>Name <input type="text" name="name" [(ngModel)]="newEmployee.name" required></label>
+    <label>Department <input type="text" name="department" [(ngModel)]="newEmployee.department" required></label>
+    <label>Email <input type="email" name="email" [(ngModel)]="newEmployee.email" required></label>
+    <label>Salary <input type="number" name="salary" [(ngModel)]="newEmployee.salary" min="0" required></label>
+    <button type="submit">Add employee</button>
+</form>
+}
+
+println("EmployeeCard component :", employeeChildList);
+println("EmployeeCard size:", employeeChildList.length);
+
+@if (employeeChildList; as employee) {
+<article class="employee-card">
+    <h2>{{ employee.name }}</h2>
+    <dl>
+        <dt>ID</dt>
+        <dd>{{ employee.id }}</dd>
+        <dt>Department</dt>
+        <dd>{{ employee.department }}</dd>
+        <dt>Email</dt>
+        <dd>{{ employee.email }}</dd>
+        <dt>Salary</dt>
+        <dd>{{ employee.salary | currency }}</dd>
+    </dl>
+</article>
+}

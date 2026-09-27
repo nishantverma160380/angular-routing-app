@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Ava Patel",
+    "department": "Engineering",
+    "email": "ava.patel@example.com",
+    "salary": 95000
+  },
+  {
+    "id": 2,
+    "name": "Liam Chen",
+    "department": "Product Design",
+    "email": "liam.chen@example.com",
+    "salary": 88000
+  },
+  {
+    "id": 3,
+    "name": "Sofia Garcia",
+    "department": "Marketing",
+    "email": "sofia.garcia@example.com",
+    "salary": 76000
+  },
+  {
+    "id": 4,
+    "name": "Ethan Johnson",
+    "department": "Sales",
+    "email": "ethan.johnson@example.com",
+    "salary": 82000
+  }
+]

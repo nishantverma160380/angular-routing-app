@@ -1,0 +1,80 @@
+[
+  {
+    "id": 1,
+    "name": "Shirts",
+    "description": "Various types of shirts",
+    "audience": ["Male", "Female", "Unisex"]
+  },
+  {
+    "id": 2,
+    "name": "Pants",
+    "description": "Different styles of pants",
+    "audience": ["Male", "Female", "Unisex"]
+  },
+  {
+    "id": 3,
+    "name": "Dresses",
+    "description": "Collection of dresses",
+    "audience": ["Female", "Unisex"]
+  },
+  {
+    "id": 1,
+    "name": "Menswear",
+    "description": "Clothing and accessories designed for men",
+    "audience": ["Male"]
+  },
+  {
+    "id": 2,
+    "name": "Womenswear",
+    "description": "Clothing and accessories designed for women",
+    "audience": ["Female"]
+  },
+  {
+    "id": 3,
+    "name": "Kids",
+    "description": "Clothing for children",
+    "audience": ["Unisex"]
+  },
+  {
+    "id": 4,
+    "name": "Footwear",
+    "description": "Shoes, trainers, boots and sandals",
+    "audience": ["Male", "Female", "Unisex"]
+  },
+  {
+    "id": 5,
+    "name": "Sportswear",
+    "description": "Clothing designed for sport and fitness",
+    "audience": ["Male", "Female", "Unisex"]
+  },
+  {
+    "id": 6,
+    "name": "Formal Wear",
+    "description": "Suits, shirts, dresses and formal clothing",
+    "audience": ["Male", "Female", "Unisex"]
+  },
+  {
+    "id": 7,
+    "name": "Casual Wear",
+    "description": "Everyday comfortable clothing",
+    "audience": ["Male", "Female", "Unisex"]
+  },
+  {
+    "id": 8,
+    "name": "Accessories",
+    "description": "Belts, bags, scarves, hats and other accessories",
+    "audience": ["Male", "Female", "Unisex"]
+  },
+  {
+    "id": 9,
+    "name": "Winter Wear",
+    "description": "Coats, jackets, knitwear and winter clothing",
+    "audience": ["Male", "Female", "Unisex"]
+  },
+  {
+    "id": 10,
+    "name": "Ethnic Wear",
+    "description": "Traditional and cultural clothing",
+    "audience": ["Male", "Female", "Unisex"]
+  }
+]

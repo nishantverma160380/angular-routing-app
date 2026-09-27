@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 
 import { EmployeeCard } from '../employee-card/employee-card';
-import { EmployeeModel } from '../models/employee';
+import { EmployeeModel } from '../models/employeeModel';
 import { EmployeeService } from '../services/employeeService';
 
 @Component({

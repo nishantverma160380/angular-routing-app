@@ -1,0 +1,21 @@
+<section class="employee-detail">
+  @if (loading) {
+    <p>Loading employee...</p>
+  } @else if (employee; as currentEmployee) {
+    <a routerLink="/employees">Back to employees</a>
+    <h2>{{ currentEmployee.name }}</h2>
+    <dl>
+      <dt>ID</dt>
+      <dd>{{ currentEmployee.id }}</dd>
+      <dt>Department</dt>
+      <dd>{{ currentEmployee.department }}</dd>
+      <dt>Email</dt>
+      <dd>{{ currentEmployee.email }}</dd>
+      <dt>Salary</dt>
+      <dd>{{ currentEmployee.salary | currency }}</dd>
+    </dl>
+  } @else if (notFound) {
+    <p>Employee not found.</p>
+    <a routerLink="/employees">Back to employees</a>
+  }
+</section>

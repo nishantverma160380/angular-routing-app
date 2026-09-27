@@ -5,7 +5,9 @@
 
     <div class="employee-grid">
         @for (employee of newemployeelist; track employee.id) {
-            <app-employee-card [employeeChildList]="employee" />
+            <app-employee-card
+                [employeeChildList]="employee"
+                [detailLink]="['/employees', employee.id]" />
         }
     </div>
 

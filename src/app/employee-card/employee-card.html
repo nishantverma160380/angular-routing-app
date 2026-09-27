@@ -8,10 +8,6 @@
     <button type="submit">Add employee</button>
 </form>
 }
-
-println("EmployeeCard component :", employeeChildList);
-println("EmployeeCard size:", employeeChildList.length);
-
 @if (employeeChildList; as employee) {
 <article class="employee-card">
     <h2>{{ employee.name }}</h2>
@@ -25,5 +21,8 @@ println("EmployeeCard size:", employeeChildList.length);
         <dt>Salary</dt>
         <dd>{{ employee.salary | currency }}</dd>
     </dl>
+        @if (detailLink) {
+            <a [routerLink]="detailLink">View details</a>
+        }
 </article>
 }

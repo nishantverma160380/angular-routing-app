@@ -1,5 +1,6 @@
 import { CurrencyPipe } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 import { EmployeeModel } from '../models/employeeModel';
@@ -7,13 +8,14 @@ import { EmployeeModel } from '../models/employeeModel';
 @Component({
     selector: 'app-employee-card',
     standalone: true,
-    imports: [CurrencyPipe, FormsModule],
+    imports: [CurrencyPipe, FormsModule, RouterLink],
     templateUrl: './employee-card.html',
     styleUrl: './employee-card.scss',
 })
 export class EmployeeCard {
     @Input() employeeChildList?: EmployeeModel;
     @Input() showAddForm = false;
+    @Input() detailLink: unknown[] | null = null;
     @Output() employeeAdded = new EventEmitter<Omit<EmployeeModel, 'id'>>();
 
     newEmployee: Omit<EmployeeModel, 'id'> = this.emptyEmployee();

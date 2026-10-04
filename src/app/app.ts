@@ -1,5 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Component, effect, inject } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { AuthService } from './services/authService';
 
 @Component({
@@ -11,7 +11,16 @@ import { AuthService } from './services/authService';
 
 export class App { 
   readonly authService = inject(AuthService);
-  constructor() { 
-    console.log('App component initialized');
+  private router = inject(Router);
+
+  constructor() {
+    effect(() => {
+      const isAdmin = this.authService.isAdmin();
+      const currentUrl = this.router.url;
+
+      if (!isAdmin && currentUrl.startsWith('/employees')) {
+        void this.router.navigateByUrl('/home');
+      }
+    });
   }
 }

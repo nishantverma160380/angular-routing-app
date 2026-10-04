@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 
 import { EmployeeCard } from '../employee-card/employee-card';
 import { EmployeeModel } from '../models/employeeModel';
@@ -15,24 +15,23 @@ import { EmployeeService } from '../services/employeeService';
 
 export class EmployeeList {
     private employeeService = inject(EmployeeService);
-    newemployeelist: EmployeeModel[] = [];
+    newemployeelist = signal<EmployeeModel[]>([]);
 
     constructor() {
         this.employeeService.getEmployeeData().subscribe((data) => {
             console.log('Employee data received:', data);
-            this.newemployeelist = data;
+            this.newemployeelist.set(data);
         });
     }
 
     onEmployeeAdded(employee: Omit<EmployeeModel, 'id'>): void {
-        const nextId = this.newemployeelist.reduce(
-            (highestId, currentEmployee) => Math.max(highestId, currentEmployee.id),
-            0,
-        ) + 1;
-        
-        this.newemployeelist = [
-            ...this.newemployeelist,
-            { id: nextId, ...employee },
-        ];
+        this.newemployeelist.update((employees) => {
+            const nextId = employees.reduce(
+                (highestId, currentEmployee) => Math.max(highestId, currentEmployee.id),
+                0,
+            ) + 1;
+
+            return [...employees, { id: nextId, ...employee }];
+        });
     }
 }

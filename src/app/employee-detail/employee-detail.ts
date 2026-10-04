@@ -1,5 +1,5 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { map } from 'rxjs';
 
@@ -17,9 +17,9 @@ export class EmployeeDetail {
     private route = inject(ActivatedRoute);
     private employeeService = inject(EmployeeService);
 
-    employee: EmployeeModel | undefined;
-    loading = true;
-    notFound = false;
+    employee = signal<EmployeeModel | undefined>(undefined);
+    loading = signal(true);
+    notFound = signal(false);
 
     constructor() {
         const employeeId = Number(this.route.snapshot.paramMap.get('id'));
@@ -31,13 +31,13 @@ export class EmployeeDetail {
             )
             .subscribe({
                 next: (employee) => {
-                    this.employee = employee;
-                    this.notFound = !employee;
-                    this.loading = false;
+                    this.employee.set(employee);
+                    this.notFound.set(!employee);
+                    this.loading.set(false);
                 },
                 error: () => {
-                    this.loading = false;
-                    this.notFound = true;
+                    this.loading.set(false);
+                    this.notFound.set(true);
                 },
             });
     }

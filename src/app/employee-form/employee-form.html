@@ -1,0 +1,45 @@
+<h1>employee-form works!</h1>
+<h2>Add Employee - Reactive Form</h2>
+
+<form [formGroup]="employeeForm">
+
+    <div>
+        <label for="name">Name</label>
+        <input id="name" type="text" formControlName="name"
+        Validators.required Validators.minLength(3)>
+    </div>
+
+    <div>
+        <label for="department">Department</label>
+        <input id="department" type="text" formControlName="department"
+        Validators.required Validators.minLength(3)>
+    </div>
+
+    <div>
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email"
+        Validators.required Validators.minLength(3)>
+    </div>
+
+    <div>
+        <label for="salary">Salary</label>
+        <input id="salary" type="number" formControlName="salary"
+        Validators.required Validators.minLength(3)>
+    </div>
+
+</form>
+
+<button type="button" (click)="showFormValue()">
+    Show Form Value
+</button>
+
+<p>
+    Current FormControl value:
+    {{ employeeForm.get('name')?.value }}
+</p>
+
+<p>
+    <button type="button" (click)="showName()">
+        Show Name in Console
+    </button>
+</p>

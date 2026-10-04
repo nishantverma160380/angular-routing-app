@@ -1,7 +1,7 @@
 <section class="employee-detail">
-  @if (loading) {
+  @if (loading()) {
     <p>Loading employee...</p>
-  } @else if (employee; as currentEmployee) {
+  } @else if (employee(); as currentEmployee) {
     <a routerLink="/employees">Back to employees</a>
     <h2>{{ currentEmployee.name }}</h2>
     <dl>
@@ -14,7 +14,7 @@
       <dt>Salary</dt>
       <dd>{{ currentEmployee.salary | currency }}</dd>
     </dl>
-  } @else if (notFound) {
+  } @else if (notFound()) {
     <p>Employee not found.</p>
     <a routerLink="/employees">Back to employees</a>
   }

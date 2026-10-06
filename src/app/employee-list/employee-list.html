@@ -1,13 +1,15 @@
 <section>
+
+    <a routerLink="/employees/add">
+        Add Employee
+    </a>
     <h2>Employees</h2>
 
     <app-employee-card [showAddForm]="true" (employeeAdded)="onEmployeeAdded($event)" />
 
     <div class="employee-grid">
         @for (employee of newemployeelist(); track employee.id) {
-            <app-employee-card
-                [employeeChildList]="employee"
-                [detailLink]="['/employees', employee.id]" />
+        <app-employee-card [employeeChildList]="employee" [detailLink]="['/employees', employee.id]" />
         }
     </div>
 

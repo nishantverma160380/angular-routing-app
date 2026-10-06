@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
-
+import { RouterLink } from '@angular/router';
 import { EmployeeCard } from '../employee-card/employee-card';
 import { EmployeeModel } from '../models/employeeModel';
 import { EmployeeService } from '../services/employeeService';
@@ -8,7 +8,7 @@ import { EmployeeService } from '../services/employeeService';
 @Component({
     selector: 'app-employee-list',
     standalone: true,
-    imports: [CommonModule, EmployeeCard],
+    imports: [CommonModule, EmployeeCard, RouterLink],
     templateUrl: './employee-list.html',
     styleUrl: './employee-list.scss',
 })

@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { ReactiveFormsModule, FormControl, Validators, FormGroup } from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import {
+  ReactiveFormsModule, FormBuilder, Validators
+} from '@angular/forms';
 
 @Component({
   imports: [ReactiveFormsModule],
@@ -7,20 +9,73 @@ import { ReactiveFormsModule, FormControl, Validators, FormGroup } from '@angula
   styleUrl: './employee-form.scss',
   templateUrl: './employee-form.html',
 })
+
 export class EmployeeForm {
-  employeeForm = new FormGroup({
-    name: new FormControl('',
-      [Validators.required, Validators.minLength(3)]),
-    department: new FormControl('',
-      [Validators.required, Validators.minLength(3)]),
-    email: new FormControl('',
-      [Validators.required, Validators.minLength(3)]),
-    salary: new FormControl(0,
-      [Validators.required, Validators.minLength(3)])
+
+  private readonly fb = inject(FormBuilder).nonNullable;
+
+  employeeForm = this.fb.group({
+    firstName: ['', [Validators.required, Validators.minLength(3)]],
+    lastName: ['', [Validators.required, Validators.minLength(3)]],
+    email: ['', [Validators.required, Validators.email, Validators.minLength(3)]],
+    age: [18, [Validators.required, Validators.min(18)]],
+    salary: [0, [Validators.required, Validators.min(0)]],
+    department: ['Engineering'],
+    address: this.fb.group({
+      street: [''],
+      city: [''],
+      postcode: ['']
+    }),
+    skills: this.fb.array([
+      this.fb.control('')
+    ])
   });
 
-  employeeName = new FormControl('',
-    [Validators.required, Validators.minLength(3)]);
+  get skills() {
+    return this.employeeForm.controls.skills;
+  }
+  addSkill(): void {
+    this.skills.push(
+      this.fb.control('')
+    );
+  }
+  removeSkill(index: number): void {
+    if (this.skills.length > 1) {
+      this.skills.removeAt(index);
+    }
+  }
+
+  onSubmit(): void {
+    if (this.employeeForm.invalid) {
+      this.employeeForm.markAllAsTouched();
+      return;
+    }
+    const employee = this.employeeForm.getRawValue();
+    console.log('Employee submitted:', employee
+    );
+
+    console.log(
+      this.employeeForm.valid
+    );
+    console.log(
+      this.employeeForm.dirty
+    );
+    console.log(
+      this.employeeForm.touched
+    );
+  }
+
+  resetForm(): void {
+    this.employeeForm.reset();
+    this.skills.clear();
+    this.skills.push(
+      this.fb.control('')
+    );
+
+  }
+
+  // employeeName = new FormControl('',
+  //   [Validators.required, Validators.minLength(3)]);
 
   showFormValue(): void {
     console.log(
@@ -29,7 +84,7 @@ export class EmployeeForm {
     );
     console.log(
       'Name:',
-      this.employeeForm.controls.name.value
+      this.employeeForm.controls.firstName.value
     );
     console.log(
       'Department:',
@@ -40,15 +95,15 @@ export class EmployeeForm {
       this.employeeForm.controls.email.value
     );
     console.log(
-      'Salary:',
-      this.employeeForm.controls.salary.value
+      'Age:',
+      this.employeeForm.controls.age.value
     );
   }
 
   showName(): void {
     console.log(
-      'FormControl value:',
-      this.employeeName.value
+      'Name:',
+      this.employeeForm.controls.firstName.value
     );
   }
 }

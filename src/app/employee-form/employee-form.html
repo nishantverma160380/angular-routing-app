@@ -1,45 +1,121 @@
 <h1>employee-form works!</h1>
 <h2>Add Employee - Reactive Form</h2>
 
-<form [formGroup]="employeeForm">
-
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
     <div>
-        <label for="name">Name</label>
-        <input id="name" type="text" formControlName="name"
-        Validators.required Validators.minLength(3)>
+        <label>First Name</label>
+        <input type="text" formControlName="firstName">
+        @if (
+        employeeForm.controls.firstName.touched &&
+        employeeForm.controls.firstName.hasError('required')
+        ) {
+        <p> First name is required. </p>
+        }
+
+    </div>
+    <div>
+        <label>Last Name</label>
+        <input type="text" formControlName="lastName">
+        @if (
+        employeeForm.controls.lastName.touched &&
+        employeeForm.controls.lastName.hasError('required')
+        ) {
+        <p> Last name is required. </p>
+        }
     </div>
 
     <div>
         <label for="department">Department</label>
-        <input id="department" type="text" formControlName="department"
-        Validators.required Validators.minLength(3)>
+        <input id="department" type="text" formControlName="department" Validators.required Validators.minLength(3)>
     </div>
 
     <div>
         <label for="email">Email</label>
-        <input id="email" type="email" formControlName="email"
-        Validators.required Validators.minLength(3)>
+        <input id="email" type="email" formControlName="email" Validators.required Validators.minLength(3)>
+        @if (
+        employeeForm.controls.email.touched &&
+        employeeForm.controls.email.hasError('required')
+        ) {
+        <p> Email is required. </p>
+        }
+        @if (
+        employeeForm.controls.email.touched &&
+        employeeForm.controls.email.hasError('email')
+        ) {
+        <p> Please enter a valid email address. </p>
+        }
     </div>
 
     <div>
         <label for="salary">Salary</label>
-        <input id="salary" type="number" formControlName="salary"
-        Validators.required Validators.minLength(3)>
+        <input id="salary" type="number" formControlName="salary" Validators.required Validators.minLength(3)>
     </div>
 
-</form>
+    <div>
+        <label for="age">Age</label>
+        <input id="age" type="number" formControlName="age" Validators.required Validators.min(18)>
+        @if (
+        employeeForm.controls.age.touched &&
+        employeeForm.controls.age.hasError('min')
+        ) {
+        <p> Employee must be at least 18. </p>
+        }
+    </div>
 
-<button type="button" (click)="showFormValue()">
-    Show Form Value
-</button>
+    <h3>Address</h3>
+    <div formGroupName="address">
+        <div>
+            <label>Street</label>
+            <input type="text" formControlName="street">
+        </div>
+        <div>
+            <label>City</label>
+            <input type="text" formControlName="city">
+        </div>
+        <div>
+            <label>Postcode</label>
+            <input type="text" formControlName="postcode">
+        </div>
+    </div>
 
-<p>
-    Current FormControl value:
-    {{ employeeForm.get('name')?.value }}
-</p>
-
-<p>
-    <button type="button" (click)="showName()">
-        Show Name in Console
+    <h3>Skills</h3>
+    <div formArrayName="skills">
+        @for (
+        skill of skills.controls;
+        track $index;
+        let i = $index
+        ) {
+        <div>
+            <input type="text" [formControlName]="i" placeholder="Enter skill">
+            <button type="button" (click)="removeSkill(i)">
+                Remove
+            </button>
+        </div>
+        }
+    </div>
+    <button type="button" (click)="addSkill()">
+        + Add Skill
     </button>
-</p>
+    <button type="submit">
+        Save Employee
+    </button>
+
+    <button type="button" (click)="resetForm()">
+        Reset
+    </button>
+
+    <button type="button" (click)="showFormValue()">
+        Show Form Value
+    </button>
+
+    <p>
+        Current FormControl value:
+        {{ employeeForm.get('name')?.value }}
+    </p>
+
+    <p>
+        <button type="button" (click)="showName()">
+            Show Name in Console
+        </button>
+    </p>
+</form>

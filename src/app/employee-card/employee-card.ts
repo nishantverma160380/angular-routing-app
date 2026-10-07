@@ -34,7 +34,11 @@ export class EmployeeCard {
 
     private emptyEmployee(): Omit<EmployeeModel, 'id'> {
         return {
-            name: '',
+            firstName: '',
+            lastName: '',
+            age: 0,
+            address: {} as EmployeeModel['address'],
+            skills: [],
             department: '',
             email: '',
             salary: 0,

@@ -1,30 +1,77 @@
 [
-    {
-        "id": 1,
-        "name": "Ava Patel",
-        "department": "Engineering",
-        "email": "ava.patel@example.com",
-        "salary": 95000
+  {
+    "id": 1,
+    "firstName": "Ava",
+    "lastName": "Patel",
+    "email": "ava.patel@example.com",
+    "age": 32,
+    "salary": 95000,
+    "department": "Engineering",
+    "address": {
+      "street": "12 King Street",
+      "city": "Leeds",
+      "postcode": "LS1 2AB"
     },
-    {
-        "id": 2,
-        "name": "Liam Chen",
-        "department": "Product Design",
-        "email": "liam.chen@example.com",
-        "salary": 88000
+    "skills": [
+      "Angular",
+      "TypeScript",
+      "AWS"
+    ]
+  },
+  {
+    "id": 2,
+    "firstName": "Liam",
+    "lastName": "Chen",
+    "email": "liam.chen@example.com",
+    "age": 29,
+    "salary": 88000,
+    "department": "Product Design",
+    "address": {
+      "street": "7 Park Road",
+      "city": "Manchester",
+      "postcode": "M1 4CD"
     },
-    {
-        "id": 3,
-        "name": "Sofia Garcia",
-        "department": "Marketing",
-        "email": "sofia.garcia@example.com",
-        "salary": 76000
+    "skills": [
+      "Figma",
+      "UX",
+      "CSS"
+    ]
+  },
+  {
+    "id": 3,
+    "firstName": "Sofia",
+    "lastName": "Garcia",
+    "email": "sofia.garcia@example.com",
+    "age": 35,
+    "salary": 76000,
+    "department": "Marketing",
+    "address": {
+      "street": "24 Queen Road",
+      "city": "York",
+      "postcode": "YO1 5EF"
     },
-    {
-        "id": 4,
-        "name": "Ethan Johnson",
-        "department": "Sales",
-        "email": "ethan.johnson@example.com",
-        "salary": 82000
-    }
+    "skills": [
+      "Analytics",
+      "SEO",
+      "Content"
+    ]
+  },
+  {
+    "id": 4,
+    "firstName": "Ethan",
+    "lastName": "Johnson",
+    "email": "ethan.johnson@example.com",
+    "age": 41,
+    "salary": 82000,
+    "department": "Sales",
+    "address": {
+      "street": "5 Market Street",
+      "city": "Sheffield",
+      "postcode": "S1 3GH"
+    },
+    "skills": [
+      "Salesforce",
+      "Negotiation"
+    ]
+  }
 ]

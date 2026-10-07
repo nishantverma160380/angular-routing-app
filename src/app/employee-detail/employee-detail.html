@@ -1,21 +1,38 @@
 <section class="employee-detail">
   @if (loading()) {
-    <p>Loading employee...</p>
+  <p>Loading employee...</p>
   } @else if (employee(); as currentEmployee) {
-    <a routerLink="/employees">Back to employees</a>
-    <h2>{{ currentEmployee.name }}</h2>
-    <dl>
-      <dt>ID</dt>
-      <dd>{{ currentEmployee.id }}</dd>
-      <dt>Department</dt>
-      <dd>{{ currentEmployee.department }}</dd>
-      <dt>Email</dt>
-      <dd>{{ currentEmployee.email }}</dd>
-      <dt>Salary</dt>
-      <dd>{{ currentEmployee.salary | currency }}</dd>
-    </dl>
+  <a routerLink="/employees">Back to employees</a>
+  <h2>{{ currentEmployee.firstName }} {{ currentEmployee.lastName }}</h2>
+  <dl>
+    <dt>ID</dt>
+    <dd>{{ currentEmployee.id }}</dd>
+    <dt>Department</dt>
+    <dd>{{ currentEmployee.department }}</dd>
+    <dt>Email</dt>
+    <dd>{{ currentEmployee.email }}</dd>
+    <dt>Salary</dt>
+    <dd>{{ currentEmployee.salary | currency }}</dd>
+    <dt>Age</dt>
+    <dd>{{ currentEmployee.age }}</dd>
+    <dt>Address</dt>
+    <dd>{{ currentEmployee.address.street }}, {{ currentEmployee.address.city }}, {{ currentEmployee.address.postcode }}
+    </dd>
+    <dt>Skills</dt>
+    <dd>
+      @if (currentEmployee.skills.length > 0) {
+      <ul>
+        @for (skill of currentEmployee.skills; track skill) {
+        <li>{{ skill }}</li>
+        }
+      </ul>
+      } @else {
+      <p>No skills listed.</p>
+      }
+    </dd>
+  </dl>
   } @else if (notFound()) {
-    <p>Employee not found.</p>
-    <a routerLink="/employees">Back to employees</a>
+  <p>Employee not found.</p>
+  <a routerLink="/employees">Back to employees</a>
   }
 </section>

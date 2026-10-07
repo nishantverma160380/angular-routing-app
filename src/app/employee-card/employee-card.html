@@ -3,7 +3,10 @@
     <h2>Add employee</h2>
     <p>*All fields are required.</p>
     <p>
-        <label>Name <input type="text" name="name" [(ngModel)]="newEmployee.name" required></label>
+        <label>First Name <input type="text" name="firstName" [(ngModel)]="newEmployee.firstName" required></label>
+    </p>
+    <p>
+        <label>Last Name <input type="text" name="lastName" [(ngModel)]="newEmployee.lastName" required></label>
     </p>
     <p>
         <label>Department <input type="text" name="department" [(ngModel)]="newEmployee.department" required></label>
@@ -21,7 +24,7 @@
 }
 @if (employeeChildList; as employee) {
 <article class="employee-card">
-    <h2>{{ employee.name }}</h2>
+    <h2>{{ employee.firstName }} {{ employee.lastName }}</h2>
     <dl>
         <dt>ID</dt>
         <dd>{{ employee.id }}</dd>
@@ -31,6 +34,22 @@
         <dd>{{ employee.email }}</dd>
         <dt>Salary</dt>
         <dd>{{ employee.salary | currency }}</dd>
+        <dt>Age</dt>
+        <dd>{{ employee.age }}</dd>
+        <dt>Address</dt>
+        <dd>{{ employee.address.street }}, {{ employee.address.city }}, {{ employee.address.postcode }}</dd>
+        <dt>Skills</dt>
+        <dd>
+            @if (employee.skills.length > 0) {
+                <ul>
+                    @for (skill of employee.skills; track skill) {
+                        <li>{{ skill }}</li>
+                    }
+                </ul>
+            } @else {
+                <p>No skills listed.</p>
+            }
+        </dd>
     </dl>
     @if (detailLink) {
     <a [routerLink]="detailLink">View details</a>

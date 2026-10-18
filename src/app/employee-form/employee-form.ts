@@ -2,6 +2,9 @@ import { Component, inject } from '@angular/core';
 import {
   ReactiveFormsModule, FormBuilder, Validators
 } from '@angular/forms';
+import {
+  noWhitespaceValidator, completeAddressValidator
+} from '../validators/employee.validators';
 
 @Component({
   imports: [ReactiveFormsModule],
@@ -15,20 +18,49 @@ export class EmployeeForm {
   private readonly fb = inject(FormBuilder).nonNullable;
 
   employeeForm = this.fb.group({
-    firstName: ['', [Validators.required, Validators.minLength(3)]],
-    lastName: ['', [Validators.required, Validators.minLength(3)]],
-    email: ['', [Validators.required, Validators.email, Validators.minLength(3)]],
+    firstName: [
+      '',
+      [
+        Validators.required,
+        Validators.minLength(3),
+        noWhitespaceValidator,
+      ],
+    ],
+    lastName: [
+      '',
+      [
+        Validators.required,
+        Validators.minLength(3),
+        noWhitespaceValidator,
+      ],
+    ],
+    email: [
+      '',
+      [
+        Validators.required,
+        Validators.email,
+        Validators.minLength(3),
+      ],
+    ],
     age: [18, [Validators.required, Validators.min(18)]],
     salary: [0, [Validators.required, Validators.min(0)]],
-    department: ['Engineering'],
-    address: this.fb.group({
-      street: [''],
-      city: [''],
-      postcode: ['']
-    }),
-    skills: this.fb.array([
-      this.fb.control('')
-    ])
+    department: [
+      'Engineering',
+      [
+        Validators.required,
+        Validators.minLength(3),
+        noWhitespaceValidator,
+      ],
+    ],
+    address: this.fb.group(
+      {
+        street: [''],
+        city: [''],
+        postcode: [''],
+      },
+      { validators: completeAddressValidator },
+    ),
+    skills: this.fb.array([this.fb.control('')]),
   });
 
   get skills() {
@@ -71,11 +103,7 @@ export class EmployeeForm {
     this.skills.push(
       this.fb.control('')
     );
-
   }
-
-  // employeeName = new FormControl('',
-  //   [Validators.required, Validators.minLength(3)]);
 
   showFormValue(): void {
     console.log(

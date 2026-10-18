@@ -5,30 +5,38 @@
     <div>
         <label>First Name</label>
         <input type="text" formControlName="firstName">
-        @if (
-        employeeForm.controls.firstName.touched &&
-        employeeForm.controls.firstName.hasError('required')
-        ) {
-        <p> First name is required. </p>
+        @if (employeeForm.controls.firstName.touched) {
+        @if (employeeForm.controls.firstName.hasError('whitespace')) {
+        <p>First name cannot contain only spaces.</p>
+        } @else if (employeeForm.controls.firstName.hasError('minlength')) {
+        <p>First name must contain at least 3 characters.</p>
         }
-
+        }
     </div>
     <div>
         <label>Last Name</label>
         <input type="text" formControlName="lastName">
-        @if (
-        employeeForm.controls.lastName.touched &&
-        employeeForm.controls.lastName.hasError('required')
-        ) {
-        <p> Last name is required. </p>
+        @if (employeeForm.controls.lastName.touched) {
+        @if (employeeForm.controls.lastName.hasError('whitespace')) {
+        <p>Last name cannot contain only spaces.</p>
+        } @else if (employeeForm.controls.lastName.hasError('minlength')) {
+        <p>Last name must contain at least 3 characters.</p>
+        }
         }
     </div>
-
     <div>
-        <label for="department">Department</label>
-        <input id="department" type="text" formControlName="department" Validators.required Validators.minLength(3)>
-    </div>
+        <input id="department" type="text" formControlName="department">
 
+        @if (employeeForm.controls.department.touched) {
+        @if (employeeForm.controls.department.hasError('required')) {
+        <p>Department is required.</p>
+        } @else if (employeeForm.controls.department.hasError('whitespace')) {
+        <p>Department cannot contain only spaces.</p>
+        } @else if (employeeForm.controls.department.hasError('minlength')) {
+        <p>Department must contain at least 3 characters.</p>
+        }
+        }
+    </div>
     <div>
         <label for="email">Email</label>
         <input id="email" type="email" formControlName="email" Validators.required Validators.minLength(3)>
@@ -75,6 +83,12 @@
         <div>
             <label>Postcode</label>
             <input type="text" formControlName="postcode">
+            @if (
+            employeeForm.controls.address.touched &&
+            employeeForm.controls.address.hasError('incompleteAddress')
+            ) {
+            <p>Enter street, city and postcode, or leave all three empty.</p>
+            }
         </div>
     </div>
 
@@ -110,7 +124,7 @@
 
     <p>
         Current FormControl value:
-        {{ employeeForm.get('name')?.value }}
+        {{ employeeForm.controls.firstName.value }}
     </p>
 
     <p>

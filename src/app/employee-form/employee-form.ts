@@ -106,24 +106,19 @@ export class EmployeeForm {
   }
 
   showFormValue(): void {
-    console.log(
-      'Employee form:',
+    console.log('Employee form:',
       this.employeeForm.value
     );
-    console.log(
-      'Name:',
+    console.log('Name:',
       this.employeeForm.controls.firstName.value
     );
-    console.log(
-      'Department:',
+    console.log('Department:',
       this.employeeForm.controls.department.value
     );
-    console.log(
-      'Email:',
+    console.log('Email:',
       this.employeeForm.controls.email.value
     );
-    console.log(
-      'Age:',
+    console.log('Age:',
       this.employeeForm.controls.age.value
     );
   }

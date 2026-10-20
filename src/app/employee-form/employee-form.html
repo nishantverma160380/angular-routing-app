@@ -6,7 +6,9 @@
         <label>First Name</label>
         <input type="text" formControlName="firstName">
         @if (employeeForm.controls.firstName.touched) {
-        @if (employeeForm.controls.firstName.hasError('whitespace')) {
+        @if (employeeForm.controls.firstName.hasError('required')) {
+        <p>First name is required.</p>
+        } @else if (employeeForm.controls.firstName.hasError('whitespace')) {
         <p>First name cannot contain only spaces.</p>
         } @else if (employeeForm.controls.firstName.hasError('minlength')) {
         <p>First name must contain at least 3 characters.</p>
@@ -15,9 +17,10 @@
     </div>
     <div>
         <label>Last Name</label>
-        <input type="text" formControlName="lastName">
         @if (employeeForm.controls.lastName.touched) {
-        @if (employeeForm.controls.lastName.hasError('whitespace')) {
+        @if (employeeForm.controls.lastName.hasError('required')) {
+        <p>Last name is required.</p>
+        } @else if (employeeForm.controls.lastName.hasError('whitespace')) {
         <p>Last name cannot contain only spaces.</p>
         } @else if (employeeForm.controls.lastName.hasError('minlength')) {
         <p>Last name must contain at least 3 characters.</p>
@@ -25,8 +28,8 @@
         }
     </div>
     <div>
+        <label for="department">Department</label>
         <input id="department" type="text" formControlName="department">
-
         @if (employeeForm.controls.department.touched) {
         @if (employeeForm.controls.department.hasError('required')) {
         <p>Department is required.</p>
@@ -39,7 +42,7 @@
     </div>
     <div>
         <label for="email">Email</label>
-        <input id="email" type="email" formControlName="email" Validators.required Validators.minLength(3)>
+        <input id="email" type="email" formControlName="email">
         @if (
         employeeForm.controls.email.touched &&
         employeeForm.controls.email.hasError('required')
@@ -56,17 +59,25 @@
 
     <div>
         <label for="salary">Salary</label>
-        <input id="salary" type="number" formControlName="salary" Validators.required Validators.minLength(3)>
+        <input id="salary" type="number" formControlName="salary">
+        @if (employeeForm.controls.salary.touched) {
+        @if (employeeForm.controls.salary.hasError('required')) {
+        <p>Salary is required.</p>
+        } @else if (employeeForm.controls.salary.hasError('min')) {
+        <p>Salary cannot be negative.</p>
+        }
+        }
     </div>
 
     <div>
         <label for="age">Age</label>
-        <input id="age" type="number" formControlName="age" Validators.required Validators.min(18)>
-        @if (
-        employeeForm.controls.age.touched &&
-        employeeForm.controls.age.hasError('min')
-        ) {
-        <p> Employee must be at least 18. </p>
+        <input id="age" type="number" formControlName="age">
+        @if (employeeForm.controls.age.touched) {
+        @if (employeeForm.controls.age.hasError('required')) {
+        <p>Age is required.</p>
+        } @else if (employeeForm.controls.age.hasError('min')) {
+        <p>Employee must be at least 18.</p>
+        }
         }
     </div>
 
@@ -110,9 +121,8 @@
     <button type="button" (click)="addSkill()">
         + Add Skill
     </button>
-    <button type="submit">
-        Save Employee
-    </button>
+
+
 
     <button type="button" (click)="resetForm()">
         Reset
@@ -121,6 +131,10 @@
     <button type="button" (click)="showFormValue()">
         Show Form Value
     </button>
+
+    <p> <button type="submit">
+            Save Employee
+        </button></p>
 
     <p>
         Current FormControl value:
